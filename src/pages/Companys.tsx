@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 interface Company {
     id: number;
@@ -27,7 +28,6 @@ const Companys: React.FC = () => {
 
     }, []);
 
-    console.log(companys);
 
     return (
         <section className="py-1 bg-blueGray-50">
@@ -94,9 +94,9 @@ const Companys: React.FC = () => {
                                             {company.mobilePhone}
                                         </td>
                                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 flex justify-center gap-2">
-                                            <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
+                                            <Link to={`detail/${company.id}`} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
                                                 Detay
-                                            </button>
+                                            </Link>
                                             <button className="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
                                                 Düzenle
                                             </button>
