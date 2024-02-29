@@ -1,12 +1,23 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Companys from "./pages/Companys"
+import NotFound from "./pages/NotFound"
 
 function App() {
   
-
   return (
     <>
-      <h1 className="text-3xl font-bold underline bg-red-500">
-        Hello world!
-      </h1>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/hakkimizda" element={<About />} />
+          <Route path="/sirketler" element={<Companys />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
