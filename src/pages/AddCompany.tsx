@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import TurnBackButton from '../components/TurnBackButton';
+import SubmitButton from '../components/SubmitButton';
 
 const AddCompanyForm: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -62,8 +64,9 @@ const AddCompanyForm: React.FC = () => {
                             <input type="tel" name="mobilePhone" id="mobilePhone" className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" value={formData.mobilePhone} onChange={handleChange} required placeholder='Your Number' />
                         </div>
                     </div>
-                    <div className="space-x-4 mt-8">
-                        <button type="submit" className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 transition-all duration-300">Firma Ekle</button>
+                    <div className="flex gap-2 ml-auto w-auto mt-6">
+                        <SubmitButton text={"Firma Ekle"}/>
+                        <TurnBackButton />
                     </div>
                 </form>
             </div>

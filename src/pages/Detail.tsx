@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import TurnBackButton from '../components/TurnBackButton';
+import SubmitButton from '../components/SubmitButton';
 
 interface Company {
     id: number;
@@ -105,12 +107,8 @@ const Detail: React.FC = () => {
                                             </select>
                                         </div>
                                         <div className="flex gap-2 ml-auto w-auto mt-6">
-                                            <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
-                                                Güncelle
-                                            </button>
-                                            <Link to="/sirketler" className="bg-cyan-300 hover:bg-cyan-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
-                                                Geri Dön
-                                            </Link>
+                                            <SubmitButton text={"Güncelle"}/>
+                                            <TurnBackButton />
                                         </div>
                                     </div>
                                 </div>
