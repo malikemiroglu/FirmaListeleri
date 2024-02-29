@@ -1,46 +1,60 @@
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const Navbar = () => {
     const location = useLocation();
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 640) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [window.innerWidth]);
 
     return (
         <nav className="bg-gray-800">
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
-                    <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        <button
-                            type="button"
-                            className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                            aria-controls="mobile-menu"
-                            aria-expanded="false"
+                    {/* Mobile menu button */}
+                    <div className="absolute right-0 flex items-center mr-3 sm:hidden h-16">
+                        <button 
+                            className="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-700 hover:text-white border border-gray-700"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
-                            <span className="absolute -inset-0.5"></span>
-                            <span className="sr-only">Open main menu</span>
-                            <svg
-                                className="block h-6 w-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                            <svg
-                                className="hidden h-6 w-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
+                            {isMobileMenuOpen ? (
+                                <XMarkIcon className="block h-6 w-6 text-white" aria-hidden="true" />
+                            ) : (
+                                <Bars3Icon className="block h-6 w-6 text-white" aria-hidden="true" />
+                            )}
                         </button>
                     </div>
+                    {/* Mobile menu */}
+                    {isMobileMenuOpen && (
+                        <div className="absolute top-16 w-full z-50 bg-gray-100 sm:hidden">
+                            <div className="flex flex-col space-y-4 py-4 px-2">
+                                <Link to="/" className={`p-3 text-gray-700 hover:bg-gray-700 hover:text-white rounded-md`} onClick={toggleMobileMenu}> Ana Sayfa </Link>
+                                <Link to="/hakkimizda" className={`p-3 text-gray-700 hover:bg-gray-700 hover:text-white rounded-md`} onClick={toggleMobileMenu}>Hakkımızda</Link>
+                                <Link to="/sirketler" className={`p-3 text-gray-700 hover:bg-gray-700 hover:text-white rounded-md`} onClick={toggleMobileMenu}>Şirketler</Link>
+                            </div>
+                        </div>
+                    )}
+                    {/* End of mobile menu */}
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex flex-shrink-0 items-center">
-                            <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+                            <Link to="/">
+                                <img className="h-8 w-auto cursor-pointer" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+                            </Link>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
@@ -50,14 +64,6 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div className="sm:hidden" id="mobile-menu">
-                <div className="space-y-1 px-2 pb-3 pt-2">
-                    <a href="#" className={`block rounded-md px-3 py-2 text-base font-medium ${location.pathname === '/' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} aria-current={location.pathname === '/' ? "page" : undefined}>Ana sayfa</a>
-                    <a href="#" className={`block rounded-md px-3 py-2 text-base font-medium ${location.pathname === '/hakkimizda' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} aria-current={location.pathname === '/hakkimizda' ? "page" : undefined}>Hakkımızda</a>
-                    <a href="#" className={`block rounded-md px-3 py-2 text-base font-medium ${location.pathname === '/sirketler' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} aria-current={location.pathname === '/sirketler' ? "page" : undefined}>Şirketler</a>
                 </div>
             </div>
         </nav>
