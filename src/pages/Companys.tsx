@@ -20,6 +20,7 @@ const Companys: React.FC = () => {
             try {
                 const response = await axios.get('https://edsapi-dev.azurewebsites.net/Company/GetAll');
                 setCompanys(response.data.data);
+                
             } catch (error) {
                 console.log(error);
             }
@@ -27,7 +28,6 @@ const Companys: React.FC = () => {
         fetchData();
 
     }, []);
-
 
     return (
         <section className="py-1 bg-blueGray-50">
@@ -39,7 +39,7 @@ const Companys: React.FC = () => {
                                 <h3 className="font-semibold text-base text-blueGray-700">Şirketler</h3>
                             </div>
                             <div className="w-full px-4 max-w-full flex-grow flex-1 text-right">
-                                <Link to="/sirket-ekle" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                                <Link to="/sirket-ekle" className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
                                     Şirket Ekle
                                 </Link>
                             </div>
@@ -96,11 +96,13 @@ const Companys: React.FC = () => {
                                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             {company.mobilePhone}
                                         </td>
-                                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center">
+                                            <div className={`w-3 h-3 rounded-full ${company.isActive ? "bg-green-500" : "bg-red-500"} inline-block mr-2`}>
+                                            </div>
                                             {company.isActive ? 'Aktif' : 'Pasif'}
                                         </td>
                                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 flex justify-center gap-2">
-                                            <Link to={`detail/${company.id}`} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
+                                            <Link to={`detail/${company.id}`} className="bg-blue-200 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
                                                 Detay
                                             </Link>
                                         </td>
