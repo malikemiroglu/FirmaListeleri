@@ -71,7 +71,7 @@ const Companys: React.FC = () => {
                                         Aktif/Pasif
                                     </th>
                                     <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
-                                        
+                                        Görüntele
                                     </th>
                                 </tr>
                             </thead>
@@ -103,9 +103,6 @@ const Companys: React.FC = () => {
                                             <Link to={`detail/${company.id}`} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
                                                 Detay
                                             </Link>
-                                            <button className="bg-red-300 hover:bg-red-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
-                                                Sil
-                                            </button>
                                         </td>
                                     </tr>
                                 ))}

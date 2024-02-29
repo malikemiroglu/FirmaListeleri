@@ -32,31 +32,42 @@ const AddCompanyForm: React.FC = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label htmlFor="title" className="block font-medium text-gray-700">Firma Adı</label>
-                    <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-                </div>
-                <div>
-                    <label htmlFor="firstName" className="block font-medium text-gray-700">Firma Sahibi Adı</label>
-                    <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} required className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-                </div>
-                <div>
-                    <label htmlFor="lastName" className="block font-medium text-gray-700">Firma Sahibi Soyadı</label>
-                    <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} required className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-                </div>
-                <div>
-                    <label htmlFor="email" className="block font-medium text-gray-700">E-posta</label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-                </div>
-                <div>
-                    <label htmlFor="mobilePhone" className="block font-medium text-gray-700">Telefon</label>
-                    <input type="tel" id="mobilePhone" name="mobilePhone" value={formData.mobilePhone} onChange={handleChange} required className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50" />
-                </div>
-                <button type="submit" className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">Firma Ekle</button>
-            </form>
-        </div>
+        <>
+            <div className="p-8 border border-gray-200 max-w-lg mx-auto mt-7 shadow-lg rounded">
+                <h1 className="font-medium text-3xl">Firma Ekle</h1>
+                <form onSubmit={handleSubmit} >
+                    <div className="mt-8 space-y-6">
+                        <div>
+                            <label htmlFor="name" className="text-sm text-gray-700 block mb-1 font-medium">Firma Adı</label>
+                            <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="Enter your name" />
+                        </div>
+                        <div>
+                            <label htmlFor="lastName" className="text-sm text-gray-700 block mb-1 font-medium">Firma Sahibi Adı</label>
+                            <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} required className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="Enter your name" />
+                        </div>
+                        <div>
+                            <label htmlFor="lastName" className="text-sm text-gray-700 block mb-1 font-medium">Firma Sahibi Soyadı</label>
+                            <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} required className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="Enter your name" />
+                        </div>
+                        <div>
+                            <label htmlFor="title" className="text-sm text-gray-700 block mb-1 font-medium">Firma Ünvanı</label>
+                            <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="Title" />
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="text-sm text-gray-700 block mb-1 font-medium">Email Adress</label>
+                            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" placeholder="yourmail@provider.com" />
+                        </div>
+                        <div>
+                            <label htmlFor="job" className="text-sm text-gray-700 block mb-1 font-medium">Telefon</label>
+                            <input type="tel" name="mobilePhone" id="mobilePhone" className="bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-full" value={formData.mobilePhone} onChange={handleChange} required placeholder='Your Number' />
+                        </div>
+                    </div>
+                    <div className="space-x-4 mt-8">
+                        <button type="submit" className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 transition-all duration-300">Firma Ekle</button>
+                    </div>
+                </form>
+            </div>
+        </>
     );
 }
 
