@@ -9,7 +9,6 @@ interface Company {
     lastName: string;
     email: string;
     mobilePhone: string;
-    // Diğer özellikler buraya eklenebilir
 }
 
 const Companys: React.FC = () => {
@@ -39,9 +38,9 @@ const Companys: React.FC = () => {
                                 <h3 className="font-semibold text-base text-blueGray-700">Şirketler</h3>
                             </div>
                             <div className="w-full px-4 max-w-full flex-grow flex-1 text-right">
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                                <Link to="/sirket-ekle" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
                                     Yeni Şirket Ekle
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
