@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-    const [isActive, setActive] = useState(true)
+    const location = useLocation();
 
     return (
         <nav className="bg-gray-800">
@@ -45,21 +45,20 @@ const Navbar = () => {
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
-                                <Link to="/" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"> Ana Sayfa </Link>
-                                <Link to="/hakkimizda" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Hakkımızda</Link>
-                                <Link to="/sirketler" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Şirketler</Link>
+                                <Link to="/" className={`px-3 py-2 text-sm font-medium ${location.pathname === '/' ? 'bg-gray-900 text-white rounded-md' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md'}`}> Ana Sayfa </Link>
+                                <Link to="/hakkimizda" className={`px-3 py-2 text-sm font-medium ${location.pathname === '/hakkimizda' ? 'bg-gray-900 text-white rounded-md' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md'}`}>Hakkımızda</Link>
+                                <Link to="/sirketler" className={`px-3 py-2 text-sm font-medium ${location.pathname === '/sirketler' ? 'bg-gray-900 text-white rounded-md' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md'}`}>Şirketler</Link>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
 
             <div className="sm:hidden" id="mobile-menu">
                 <div className="space-y-1 px-2 pb-3 pt-2">
-                    <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Ana sayfa</a>
-                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Hakkımızda</a>
-                    <a href="#" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Şirketler</a>
+                    <a href="#" className={`block rounded-md px-3 py-2 text-base font-medium ${location.pathname === '/' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} aria-current={location.pathname === '/' ? "page" : undefined}>Ana sayfa</a>
+                    <a href="#" className={`block rounded-md px-3 py-2 text-base font-medium ${location.pathname === '/hakkimizda' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} aria-current={location.pathname === '/hakkimizda' ? "page" : undefined}>Hakkımızda</a>
+                    <a href="#" className={`block rounded-md px-3 py-2 text-base font-medium ${location.pathname === '/sirketler' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'}`} aria-current={location.pathname === '/sirketler' ? "page" : undefined}>Şirketler</a>
                 </div>
             </div>
         </nav>
