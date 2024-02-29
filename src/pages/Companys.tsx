@@ -77,7 +77,7 @@ const Companys: React.FC = () => {
                             </thead>
                             <tbody>
                                 {companys.map(company => (
-                                    <tr key={company.id}>
+                                    <tr key={company.id} className={`${company.isActive ? '' : 'bg-gray-200'}`}>
                                         <td className="text-xs p-4 px-6 text-blueGray-700">
                                             {company.title}
                                         </td>
