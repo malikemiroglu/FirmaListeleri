@@ -9,6 +9,7 @@ interface Company {
     lastName: string;
     email: string;
     mobilePhone: string;
+    isActive: boolean;
 }
 
 const Companys: React.FC = () => {
@@ -39,7 +40,7 @@ const Companys: React.FC = () => {
                             </div>
                             <div className="w-full px-4 max-w-full flex-grow flex-1 text-right">
                                 <Link to="/sirket-ekle" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
-                                    Yeni Şirket Ekle
+                                    Şirket Ekle
                                 </Link>
                             </div>
                         </div>
@@ -65,6 +66,9 @@ const Companys: React.FC = () => {
                                     </th>
                                     <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                         Telefon
+                                    </th>
+                                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                        Aktif/Pasif
                                     </th>
                                     <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                                         
@@ -92,13 +96,13 @@ const Companys: React.FC = () => {
                                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                             {company.mobilePhone}
                                         </td>
+                                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {company.isActive ? 'Aktif' : 'Pasif'}
+                                        </td>
                                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 flex justify-center gap-2">
                                             <Link to={`detail/${company.id}`} className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
                                                 Detay
                                             </Link>
-                                            <button className="bg-blue-300 hover:bg-blue-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
-                                                Düzenle
-                                            </button>
                                             <button className="bg-red-300 hover:bg-red-400 text-gray-800 font-bold py-2 px-4 rounded transition-all duration-300">
                                                 Sil
                                             </button>
