@@ -28,7 +28,6 @@ const AddCompanyForm: React.FC = () => {
         try {
             await axios.post(`${import.meta.env.VITE_API_URL}/Company/CreateOrUpdate`, formData);
             navigate('/sirketler');
-            window.location.reload();
         } catch (error) {
             console.log(error);
         }

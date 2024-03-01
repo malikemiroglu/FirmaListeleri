@@ -66,7 +66,7 @@ export default function CompanyProvider({ children }: CompanyProviderProps) {
         };
 
         fetchData();
-    }, [currentPage]);
+    }, [currentPage, companies]);
 
     return (
         <CompanyContext.Provider value={{ companies, setCompanies, totalPages, currentPage, setCurrentPage, setTotalPages, error }}>
