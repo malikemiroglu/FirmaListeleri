@@ -6,22 +6,27 @@ import Companies from "./pages/Companies"
 import Detail from "./pages/Detail"
 import AddCompany from "./pages/AddCompany"
 import NotFound from "./pages/NotFound"
+import CompanyProvider from "./context/CompanyContext"
+import Pagination from "./components/Pagination"
 
 function App() {
-  
+
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hakkimizda" element={<About />} />
-          <Route path="/sirketler" element={<Companies />} />
-          <Route path="/sirketler/detail/:id" element={<Detail />} />
-          <Route path="/sirket-ekle" element={<AddCompany />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+    <CompanyProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hakkimizda" element={<About />} />
+            <Route path="/sirketler" element={<Companies />} />
+            <Route path="/sirketler/detail/:id" element={<Detail />} />
+            <Route path="/sirket-ekle" element={<AddCompany />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Pagination />
+        </BrowserRouter>
+    </CompanyProvider>
     </>
   )
 }

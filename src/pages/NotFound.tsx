@@ -1,6 +1,7 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NotFound = () => {
+const NotFound:React.FC = () => {
     return (
         <div className="myCustomHeight flex items-center justify-center bg-gray-100">
             <div className="p-8 bg-white shadow-lg rounded-lg">

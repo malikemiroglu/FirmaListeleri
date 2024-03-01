@@ -1,33 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-
-interface Company {
-    id: number;
-    title: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    mobilePhone: string;
-    isActive: boolean;
-}
+import { useCompanyContext } from '../context/CompanyContext';
 
 const Companies: React.FC = () => {
-    const [companies, setCompanies] = useState<Company[]>([]);
+    const { companies } = useCompanyContext();
     const [sortByActive, setSortByActive] = useState<boolean | null>(false);
     const [clickCount, setClickCount] = useState<number>(1);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('https://edsapi-dev.azurewebsites.net/Company/GetAll');
-                setCompanies(response.data.data);
-                setSortByActive(null);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchData();
+        setSortByActive(null);
     }, []);
 
     const handleSortByActive = () => {
@@ -55,7 +36,6 @@ const Companies: React.FC = () => {
             return 0;
         }
     });
-
 
     return (
         <section className="py-1">
