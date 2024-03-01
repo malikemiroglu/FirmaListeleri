@@ -54,7 +54,7 @@ export default function CompanyProvider({ children }: CompanyProviderProps) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://edsapi-dev.azurewebsites.net/Company/GetAll?pageIndex=${currentPage}&pageSize=8`);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/Company/GetAll?pageIndex=${currentPage}&pageSize=8`);
                 setCompanies(response.data.data);
                 const totalItems = response.data.totalRecord;
                 const totalPages = Math.ceil(totalItems / 8);

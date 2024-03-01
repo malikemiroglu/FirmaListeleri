@@ -35,9 +35,9 @@ const Detail: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            await axios.post('https://edsapi-dev.azurewebsites.net/Company/CreateOrUpdate', formData);
+            await axios.post(`${import.meta.env.VITE_API_URL}/Company/CreateOrUpdate`, formData);
 
-            await axios.post('https://edsapi-dev.azurewebsites.net/Company/ChangeIsActive', {
+            await axios.post(`${import.meta.env.VITE_API_URL}/Company/ChangeIsActive`, {
                 id: formData?.id,
                 isActive: formData?.isActive
             });
