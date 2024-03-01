@@ -14,7 +14,7 @@ const Detail: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://edsapi-dev.azurewebsites.net/Company/GetById?id=${id}`);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/Company/GetById?id=${id}`);
                 setCompany(response.data.data);
                 setFormData(response.data.data);
             } catch (error) {
