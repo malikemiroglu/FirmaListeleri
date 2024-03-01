@@ -6,7 +6,7 @@ import Pagination from '../components/Pagination';
 import SearchCompany from '../components/SearchCompany';
 
 const Companies: React.FC = () => {
-    const { companies, setCompanies, setCurrentPage, currentPage } = useCompanyContext();
+    const { companies, setCompanies } = useCompanyContext();
     const [sortByActive, setSortByActive] = useState<boolean | null>(false);
     const [clickCount, setClickCount] = useState<number>(1);
     const [searchText, setSearchText] = useState<string>('');
