@@ -28,6 +28,7 @@ const AddCompanyForm: React.FC = () => {
         try {
             await axios.post('https://edsapi-dev.azurewebsites.net/Company/CreateOrUpdate', formData);
             navigate('/sirketler');
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }

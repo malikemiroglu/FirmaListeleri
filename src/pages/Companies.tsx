@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCompanyContext } from '../context/CompanyContext';
 import axios from 'axios';
+import Pagination from '../components/Pagination';
 
 const Companies: React.FC = () => {
     const { companies, setCompanies, setCurrentPage, currentPage } = useCompanyContext();
@@ -58,6 +59,7 @@ const Companies: React.FC = () => {
     });
 
     return (
+        <>
         <section className="py-1">
             <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
@@ -166,6 +168,8 @@ const Companies: React.FC = () => {
                 </div>
             </div>
         </section>
+        <Pagination />
+        </>
     )
 }
 

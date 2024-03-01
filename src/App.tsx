@@ -24,8 +24,8 @@ function App() {
             <Route path="/sirket-ekle" element={<AddCompany />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Pagination />
         </BrowserRouter>
+        
     </CompanyProvider>
     </>
   )
