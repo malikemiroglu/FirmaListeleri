@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCompanyContext } from '../context/CompanyContext';
 import axios from 'axios';
 import Pagination from '../components/Pagination';
+import SearchCompany from '../components/SearchCompany';
 
 const Companies: React.FC = () => {
     const { companies, setCompanies, setCurrentPage, currentPage } = useCompanyContext();
@@ -68,30 +69,13 @@ const Companies: React.FC = () => {
                             <div className="w-full px-4 max-w-full flex-grow flex-1">
                                 <h3 className="font-semibold text-base">Şirketler</h3>
                             </div>
-                            <div className="w-full px-4 max-w-full flex-grow flex-1 text-right">
-                                <input
-                                    type="text"
-                                    placeholder="Firma adı veya e-postaya göre ara"
-                                    value={searchText}
-                                    onChange={handleInputChange}
-                                    className="px-3 py-2 border border-gray-300 rounded-md  mr-3 w-[300px]"
-                                />
-                                <select
-                                    value={searchBy}
-                                    onChange={(e) => setSearchBy(e.target.value)}
-                                    className="px-3 py-2 border border-gray-300 rounded-md  mr-3"
-                                >
-                                    <option value="title,email">Title & Email</option>
-                                    <option value="title">Title</option>
-                                    <option value="email">Email</option>
-                                </select>
-                                <button onClick={handleSearch} className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
-                                    Ara
-                                </button>
-                                <Link to="/sirket-ekle" className="inline-block ml-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
-                                    Şirket Ekle
-                                </Link>
-                            </div>
+                            <SearchCompany 
+                                searchText={searchText} 
+                                handleInputChange={handleInputChange} 
+                                searchBy={searchBy} 
+                                setSearchBy={setSearchBy} 
+                                handleSearch={handleSearch}
+                            />
                         </div>
                     </div>
                     <div className="block w-full overflow-x-auto">

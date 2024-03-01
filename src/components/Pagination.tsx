@@ -3,7 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { useCompanyContext } from '../context/CompanyContext'; 
 
 const Pagination: React.FC = () => {
-    const { currentPage, totalPages, setCurrentPage, setTotalPages } = useCompanyContext(); 
+    const { currentPage, totalPages, setCurrentPage } = useCompanyContext(); 
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 

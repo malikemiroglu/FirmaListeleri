@@ -3,16 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import TurnBackButton from '../components/TurnBackButton';
 import SubmitButton from '../components/SubmitButton';
-
-interface Company {
-    id: number;
-    title: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    mobilePhone: string;
-    isActive: boolean;
-}
+import { Company } from '../context/CompanyContext';
 
 const Detail: React.FC = () => {
     const [company, setCompany] = useState<Company | null>(null);
