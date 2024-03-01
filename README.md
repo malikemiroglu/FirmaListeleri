@@ -30,9 +30,7 @@ Bu proje, şirketlerin listelendiği, detaylarının görüntülendiği ve arana
 2.Proje dizinine gidin
 
 ```bash
-  cd desktop
-  
-  cd "FirmaListeleri"
+  cd FirmaListeleri
 ```
 
 3.Gerekli bağımlılıkları yükleyin:
