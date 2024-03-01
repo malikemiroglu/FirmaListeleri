@@ -20,7 +20,11 @@ const Navbar = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [window.innerWidth]);
+    }, []);
+
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [location.pathname]);
 
     return (
         <nav className="bg-gray-800">
@@ -30,7 +34,7 @@ const Navbar = () => {
                     <div className="absolute right-0 flex items-center mr-3 sm:hidden h-16">
                         <button 
                             className="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-700 hover:text-white border border-gray-700"
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            onClick={toggleMobileMenu}
                         >
                             {isMobileMenuOpen ? (
                                 <XMarkIcon className="block h-6 w-6 text-white" aria-hidden="true" />
