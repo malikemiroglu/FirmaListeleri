@@ -1,11 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCompanyContext } from '../context/CompanyContext';
+import axios from 'axios';
 
 const Companies: React.FC = () => {
-    const { companies } = useCompanyContext();
+    const { companies, setCompanies, setCurrentPage, currentPage } = useCompanyContext();
     const [sortByActive, setSortByActive] = useState<boolean | null>(false);
     const [clickCount, setClickCount] = useState<number>(1);
+    const [searchText, setSearchText] = useState<string>('');
+    const [searchBy, setSearchBy] = useState<string>('title,email');
+
+    const handleSearch = async () => {
+        try {
+            const response = await axios.get(`https://edsapi-dev.azurewebsites.net/Company/GetAll?searchBy=${searchBy}&searchText=${searchText}`);
+            setCompanies(response.data.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { value } = e.target;
+        setSearchText(value);
+        if (value === '') {
+            window.location.reload();
+        }
+    };
 
     useEffect(() => {
         setSortByActive(null);
@@ -47,7 +67,26 @@ const Companies: React.FC = () => {
                                 <h3 className="font-semibold text-base">Şirketler</h3>
                             </div>
                             <div className="w-full px-4 max-w-full flex-grow flex-1 text-right">
-                                <Link to="/sirket-ekle" className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                                <input
+                                    type="text"
+                                    placeholder="Firma adı veya e-postaya göre ara"
+                                    value={searchText}
+                                    onChange={handleInputChange}
+                                    className="px-3 py-2 border border-gray-300 rounded-md  mr-3 w-[300px]"
+                                />
+                                <select
+                                    value={searchBy}
+                                    onChange={(e) => setSearchBy(e.target.value)}
+                                    className="px-3 py-2 border border-gray-300 rounded-md  mr-3"
+                                >
+                                    <option value="title,email">Title & Email</option>
+                                    <option value="title">Title</option>
+                                    <option value="email">Email</option>
+                                </select>
+                                <button onClick={handleSearch} className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
+                                    Ara
+                                </button>
+                                <Link to="/sirket-ekle" className="inline-block ml-3 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-all duration-300">
                                     Şirket Ekle
                                 </Link>
                             </div>

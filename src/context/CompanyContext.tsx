@@ -17,6 +17,7 @@ export type CompanyContextType = {
     currentPage: number;
     setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
     totalPages: number;
+    setTotalPages?: React.Dispatch<React.SetStateAction<number>>;
     error: string | null;
 };
 
@@ -26,6 +27,7 @@ const defaultState: CompanyContextType = {
     currentPage: 1,
     setCurrentPage: () => {},
     totalPages: 0,
+    setTotalPages: () => {},
     error: null,
 };
 
@@ -67,7 +69,7 @@ export default function CompanyProvider({ children }: CompanyProviderProps) {
     }, [currentPage]);
 
     return (
-        <CompanyContext.Provider value={{ companies, setCompanies, totalPages, currentPage, setCurrentPage, error }}>
+        <CompanyContext.Provider value={{ companies, setCompanies, totalPages, currentPage, setCurrentPage, setTotalPages, error }}>
             {children}
         </CompanyContext.Provider>
     );

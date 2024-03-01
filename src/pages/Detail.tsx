@@ -50,8 +50,8 @@ const Detail: React.FC = () => {
                 id: formData?.id,
                 isActive: formData?.isActive
             });
-
             navigate('/sirketler');
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
