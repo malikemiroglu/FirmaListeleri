@@ -62,18 +62,18 @@ const Companies: React.FC = () => {
     return (
         <>
         <section className="py-1">
-            <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+            <div className="w-full xl:w-10/12 mb-12 xl:mb-0 px-4 mx-auto sm:mt-24">
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                     <div className="rounded-t mb-0 px-4 py-3 border-0">
-                        <div className="flex flex-wrap items-center">
-                            <div className="w-full px-4 max-w-full flex-grow flex-1">
+                        <div className="flex items-center">
+                            <div className="w-full px-4 max-w-full sm:flex-1">
                                 <h3 className="font-semibold text-base">Şirketler</h3>
                             </div>
-                            <SearchCompany 
-                                searchText={searchText} 
-                                handleInputChange={handleInputChange} 
-                                searchBy={searchBy} 
-                                setSearchBy={setSearchBy} 
+                            <SearchCompany
+                                searchText={searchText}
+                                handleInputChange={handleInputChange}
+                                searchBy={searchBy}
+                                setSearchBy={setSearchBy}
                                 handleSearch={handleSearch}
                             />
                         </div>
@@ -104,7 +104,7 @@ const Companies: React.FC = () => {
                                         <div className='flex items-center gap-1'>
                                             Aktif/Pasif
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 cursor-pointer">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
                                             </svg>
                                         </div>
                                     </th>
