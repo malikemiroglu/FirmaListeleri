@@ -12,22 +12,50 @@ interface Company {
     isActive: boolean;
 }
 
-const Companys: React.FC = () => {
-    const [companys, setCompanys] = useState<Company[]>([]);
+const Companies: React.FC = () => {
+    const [companies, setCompanies] = useState<Company[]>([]);
+    const [sortByActive, setSortByActive] = useState<boolean | null>(false);
+    const [clickCount, setClickCount] = useState<number>(1);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://edsapi-dev.azurewebsites.net/Company/GetAll');
-                setCompanys(response.data.data);
-                
+                setCompanies(response.data.data);
+                setSortByActive(null);
             } catch (error) {
                 console.log(error);
             }
         };
         fetchData();
-
     }, []);
+
+    const handleSortByActive = () => {
+        setClickCount(prevClickCount => prevClickCount + 1);
+
+        if (clickCount % 3 === 0) {
+            setSortByActive(null);
+        } else {
+            setSortByActive(prevSortByActive => {
+                return prevSortByActive === null ? true : !prevSortByActive;
+            });
+        }
+
+        if (clickCount % 3 === 0 && clickCount !== 0) {
+            setClickCount(1);
+        }
+    }
+
+    const sortedCompanies = [...companies].sort((a, b) => {
+        if (sortByActive === true) {
+            return a.isActive === b.isActive ? 0 : a.isActive ? -1 : 1;
+        } else if (sortByActive === false) {
+            return a.isActive === b.isActive ? 0 : a.isActive ? 1 : -1;
+        } else {
+            return 0;
+        }
+    });
+
 
     return (
         <section className="py-1">
@@ -67,8 +95,13 @@ const Companys: React.FC = () => {
                                     <th className="px-6 border border-solid py-3 text-xs uppercase border-l-0 border-r-0 font-semibold text-left">
                                         Telefon
                                     </th>
-                                    <th className="px-6 border border-solid py-3 text-xs uppercase border-l-0 border-r-0 font-semibold text-left">
-                                        Aktif/Pasif
+                                    <th className="px-6 border border-solid py-3 text-xs uppercase border-l-0 border-r-0 font-semibold text-left" onClick={() => handleSortByActive()}>
+                                        <div className='flex items-center gap-1'>
+                                            Aktif/Pasif
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 cursor-pointer">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+                                            </svg>
+                                        </div>
                                     </th>
                                     <th className="px-6 border border-solid py-3 text-xs uppercase border-l-0 border-r-0 font-semibold text-center">
                                         Görüntele
@@ -76,8 +109,8 @@ const Companys: React.FC = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {companys.map(company => (
-                                    <tr key={company.id} className={`${company.isActive ? '' : 'bg-gray-200'}`}>
+                                {sortedCompanies.map((company, index) => (
+                                    <tr key={company.id} className={`${index % 2 === 0 ? '' : 'bg-gray-200'}`}>
                                         <td className="text-xs p-4 px-6 text-blueGray-700">
                                             {company.title}
                                         </td>
@@ -117,4 +150,4 @@ const Companys: React.FC = () => {
     )
 }
 
-export default Companys;
+export default Companies;
