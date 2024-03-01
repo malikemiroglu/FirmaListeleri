@@ -1,30 +1,51 @@
-# React + TypeScript + Vite
+# Şirket Yönetim Uygulaması
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, şirketlerin listelendiği, detaylarının görüntülendiği ve aranabildiği bir React uygulamasını içermektedir.
 
-Currently, two official plugins are available:
+## Kullanılan Teknolojiler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js
+- TypeScript
+- react-router-dom
+- Axios
+- Tailwindcss
 
-## Expanding the ESLint configuration
+## Özellikler
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Şirket listesi görüntüleme
+- Şirket detaylarını görüntüleme
+- Şirketler arasında arama yapabilme
+- Şirketlerin aktif/pasif durumunu gösterme ve sıralama
+- Şirket ekleme
+- Şirket detaylarını güncelleme
 
-- Configure the top-level `parserOptions` property like this:
+## Bilgisayarınızda Çalıştırın
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1.Projeyi klonlayın
+
+```bash
+  git clone https://github.com/malikemiroglu/FirmaListeleri.git
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2.Proje dizinine gidin
+
+```bash
+  cd FirmaListeleri
+```
+
+3.Gerekli bağımlılıkları yükleyin:
+
+```bash
+npm install
+```
+
+4.Uygulamayı başlatın:
+
+```bash
+npm run dev
+```
+5.Tarayıcınızda aşağıdaki adresi ziyaret edin:
+
+```bash
+http://localhost:3000
+```  
