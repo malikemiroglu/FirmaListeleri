@@ -14,7 +14,7 @@ const Companies: React.FC = () => {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get(`https://edsapi-dev.azurewebsites.net/Company/GetAll?searchBy=${searchBy}&searchText=${searchText}`);
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/Company/GetAll?searchBy=${searchBy}&searchText=${searchText}`);
             setCompanies(response.data.data);
         } catch (error) {
             console.log(error);
