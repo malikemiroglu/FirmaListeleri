@@ -12,8 +12,8 @@ function App() {
 
   return (
     <>
-    <CompanyProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <CompanyProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,8 +23,8 @@ function App() {
           <Route path="/sirket-ekle" element={<AddCompany />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </CompanyProvider>
+      </CompanyProvider>
+    </BrowserRouter>
     </>
   )
 }

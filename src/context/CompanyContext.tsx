@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 export type Company = {
     id: number;
@@ -50,22 +51,25 @@ export default function CompanyProvider({ children }: CompanyProviderProps) {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalPages, setTotalPages] = useState<number>(0);
     const [error, setError] = useState<string | null>(null);
+    const location = useLocation();
+
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/Company/GetAll?pageIndex=${currentPage}&pageSize=8`);
+            setCompanies(response.data.data);
+            const totalItems = response.data.totalRecord;
+            const totalPages = Math.ceil(totalItems / 8);
+            setTotalPages(totalPages);
+        } catch (error) {
+            setError('Veri alınırken bir hata oluştu.');
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/Company/GetAll?pageIndex=${currentPage}&pageSize=8`);
-                setCompanies(response.data.data);
-                const totalItems = response.data.totalRecord;
-                const totalPages = Math.ceil(totalItems / 8);
-                setTotalPages(totalPages);
-            } catch (error) {
-                setError('Veri alınırken bir hata oluştu.');
-                console.log(error);
-            }
-        };
         fetchData();
-    }, [currentPage]);
+    }, [location.pathname]);
 
     return (
         <CompanyContext.Provider value={{ companies, setCompanies, totalPages, currentPage, setCurrentPage, setTotalPages, error }}>

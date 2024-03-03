@@ -42,7 +42,6 @@ const Detail: React.FC = () => {
                 isActive: formData?.isActive
             });
             navigate('/sirketler');
-            window.location.reload();
         } catch (error) {
             console.log(error);
         }
