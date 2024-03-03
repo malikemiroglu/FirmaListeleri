@@ -69,7 +69,7 @@ export default function CompanyProvider({ children }: CompanyProviderProps) {
 
     useEffect(() => {
         fetchData();
-    }, [location.pathname]);
+    }, [location.pathname, currentPage]);
 
     return (
         <CompanyContext.Provider value={{ companies, setCompanies, totalPages, currentPage, setCurrentPage, setTotalPages, error }}>
